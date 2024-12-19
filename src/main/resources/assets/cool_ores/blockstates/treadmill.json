@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "cool_ores:block/treadmill_model"
+    },
+    "facing=east": {
+      "model": "cool_ores:block/treadmill_model",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "cool_ores:block/treadmill_model",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "cool_ores:block/treadmill_model",
+      "y": 270
+    }
+  }
+}
