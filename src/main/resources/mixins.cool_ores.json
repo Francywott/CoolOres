@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.frozenblock.cool_ores.mixin",
+  "refmap": "mixins.cool_ores.refmap.json",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "BlockMixin"
+  ],
+  "client": [
+  ],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

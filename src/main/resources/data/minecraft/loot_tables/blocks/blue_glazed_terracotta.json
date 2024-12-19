@@ -1,0 +1,47 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "scguns:blasphemy",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AmmoCount:10}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "scguns:flayed_god",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AmmoCount:55}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "scguns:nervepinch",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{AmmoCount:8}"
+            }
+          ]
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "minecraft:blocks/blue_glazed_terracotta"
+}
