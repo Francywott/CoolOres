@@ -22,7 +22,7 @@ public class CoolOres {
 
     @SubscribeEvent
     public void registerEvent(RegisterEvent event) {
-       event.register(Registries.ITEM, helper -> RegisterItems.register());
-       event.register(Registries.BLOCK, helper -> RegisterBlocks.register());
+       event.register(Registries.ITEM, RegisterItems::register);
+       event.register(Registries.BLOCK, RegisterBlocks::register);
     }
 }

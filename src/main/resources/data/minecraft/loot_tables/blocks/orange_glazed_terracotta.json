@@ -1,0 +1,59 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "cool_ores:dumbbell"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cool_ores:treadmill"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_chestplate",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:16383998}}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "Gym Shirt",
+                "italic": false
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_leggings",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{display:{color:1908001}}"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "text": "Sport Pants",
+                "italic": false
+              }
+            }
+          ]
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "minecraft:blocks/orange_glazed_terracotta"
+}

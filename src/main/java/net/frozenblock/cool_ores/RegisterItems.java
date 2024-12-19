@@ -1,15 +1,14 @@
 package net.frozenblock.cool_ores;
 
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
+import net.minecraftforge.registries.RegisterEvent;
 
 public class RegisterItems {
 
     public static final SwordItem DUMBBELLS = new SwordItem(Tiers.NETHERITE, 100, 100, new Item.Properties().stacksTo(1));
 
-    public static void register() {
-        Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(CoolOres.MOD_ID, "dumbbells"), DUMBBELLS);
+    public static void register(RegisterEvent.RegisterHelper<Item> helper) {
+        helper.register("dumbbell", DUMBBELLS);
+        helper.register("treadmill", new BlockItem(RegisterBlocks.TREADMILL_BLOCK, new Item.Properties()));
     }
 }
