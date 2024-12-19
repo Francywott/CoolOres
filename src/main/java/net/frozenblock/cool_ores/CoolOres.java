@@ -17,10 +17,12 @@ public class CoolOres {
 
     public CoolOres() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+        bus.register(this);
     }
 
     @SubscribeEvent
     public void registerEvent(RegisterEvent event) {
-       event.register(Registries.BLOCK, helper -> RegisterItems.register());
+       event.register(Registries.ITEM, helper -> RegisterItems.register());
+       event.register(Registries.BLOCK, helper -> RegisterBlocks.register());
     }
 }
