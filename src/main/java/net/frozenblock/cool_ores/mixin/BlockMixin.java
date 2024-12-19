@@ -90,6 +90,11 @@ public class BlockMixin {
             ItemEntity itemEntity = new ItemEntity(level, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, itemStack1);
             itemEntity.setPickUpDelay(10);
             level.addFreshEntity(itemEntity);
+        } else if(blockState.getBlock() == Blocks.PURPLE_GLAZED_TERRACOTTA) {
+            final int random_upper = (int) (Math.random() * 3);
+            if (random_upper == 0) {
+                cool_ores$NetherPortalBuilder();
+            }
         }
     }
 
@@ -129,5 +134,10 @@ public class BlockMixin {
             }
         }
         CoolOres.LIST.add(() -> cool_ores$Mine3x3(level, pos.below(), player));
+    }
+
+    @Unique
+    private static void cool_ores$NetherPortalBuilder(Level level, BlockPos pos, Player player) {
+
     }
 }
