@@ -17,13 +17,13 @@ import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParam;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -81,6 +81,13 @@ public class BlockMixin {
             final double random = Math.random();
             final var randomCar = cool_ores$PREFABS[(int)(random*cool_ores$PREFABS.length)];
             ItemEntity itemEntity = new ItemEntity(level, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, randomCar.toStack());
+            itemEntity.setPickUpDelay(10);
+            level.addFreshEntity(itemEntity);
+        } else if(blockState.getBlock() == Blocks.LIME_GLAZED_TERRACOTTA) {
+            final double random = Math.random();
+            ItemStack itemStack1 = Items.ANVIL.getDefaultInstance();
+            itemStack1.setCount((int)(2 + (random * 3)));
+            ItemEntity itemEntity = new ItemEntity(level, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, itemStack1);
             itemEntity.setPickUpDelay(10);
             level.addFreshEntity(itemEntity);
         }
