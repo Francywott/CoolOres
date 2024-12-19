@@ -32,38 +32,29 @@ public class BlockMixin {
     private static final TagKey<Block> ORE_TAG = TagKey.create(Registries.BLOCK, new ResourceLocation("forge:ores"));
     @Inject(method = "playerDestroy", at = @At("TAIL"))
     private void cool_ores$playerDestroy(Level level, Player player, BlockPos pos, BlockState blockState, BlockEntity blockEntity, ItemStack itemStack, CallbackInfo ci) {
-        if (level.isClientSide) {
-            return;
-        }
+        if (level.isClientSide) return;
         if (blockState.getBlock() == Blocks.PINK_GLAZED_TERRACOTTA) {
             BlockPos pos2 = cool_ores$EmptyFind(level, pos);
             EntityType.CREEPER.spawn((ServerLevel) level, pos2, MobSpawnType.MOB_SUMMONED);
-        }
-        else if (blockState.getBlock() == Blocks.YELLOW_GLAZED_TERRACOTTA) {
+        } else if (blockState.getBlock() == Blocks.YELLOW_GLAZED_TERRACOTTA) {
             final Block block = BuiltInRegistries.BLOCK.get(new ResourceLocation("lucky:lucky_block"));
             block.playerDestroy(level, player, pos, block.defaultBlockState(), blockEntity, itemStack);
-        }
-        else if (blockState.getBlock() == Blocks.MAGENTA_GLAZED_TERRACOTTA) {
+        } else if (blockState.getBlock() == Blocks.MAGENTA_GLAZED_TERRACOTTA) {
             cool_ores$Mine3x3(level, pos, player);
         }
     }
 
     @Unique
     private static BlockPos cool_ores$EmptyFind(Level level, BlockPos pos) {
-        if (!level.getBlockState(pos).isSolid() && !level.getBlockState(pos.above()).isSolid()) {
-            return pos;
+        if (!level.getBlockState(pos).isSolid() && !level.getBlockState(pos.above()).isSolid()) return pos;
+
+        for(Direction dir : Direction.values()) { //UP DOWN NORTH WEST SOUTH EAST
+            BlockPos pos2 = pos.relative(dir);
+            if (!level.getBlockState(pos2).isSolid() && !level.getBlockState(pos2.above()).isSolid()) return pos2;
         }
         for(Direction dir : Direction.values()) { //UP DOWN NORTH WEST SOUTH EAST
             BlockPos pos2 = pos.relative(dir);
-            if (!level.getBlockState(pos2).isSolid() && !level.getBlockState(pos2.above()).isSolid()) {
-                return pos2;
-            }
-        }
-        for(Direction dir : Direction.values()) { //UP DOWN NORTH WEST SOUTH EAST
-            BlockPos pos2 = pos.relative(dir);
-            if (!level.getBlockState(pos2).isSolid() && !level.getBlockState(pos2.below()).isSolid()) {
-                return pos2;
-            }
+            if (!level.getBlockState(pos2).isSolid() && !level.getBlockState(pos2.below()).isSolid()) return pos2;
         }
         return pos;
     }
@@ -78,11 +69,8 @@ public class BlockMixin {
                     var list = state2.getDrops(new LootParams.Builder((ServerLevel) level));
                     list.forEach(player::addItem);
                     level.setBlock(pos2, Blocks.AIR.defaultBlockState(), 3);
-                }
-                else {
-                    if (level.getBlockState(pos2).getBlock() == Blocks.BEDROCK){
-                        return;
-                    }
+                } else {
+                    if (level.getBlockState(pos2).getBlock() == Blocks.BEDROCK) return;
                     level.destroyBlock(pos2, true, player);
                 }
             }

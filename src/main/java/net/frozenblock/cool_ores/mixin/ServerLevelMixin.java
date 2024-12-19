@@ -7,14 +7,15 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.ArrayList;
 import java.util.function.BooleanSupplier;
 
 @Mixin(ServerLevel.class)
-
 public class ServerLevelMixin {
     @Inject(method = "tick", at = @At("TAIL"))
-    private void cool_ores$tick(BooleanSupplier boolianSupplier, CallbackInfo ci) {
-        CoolOres.LIST.forEach(Runnable::run);
+    private void cool_ores$tick(BooleanSupplier booleanSupplier, CallbackInfo ci) {
+        ArrayList<Runnable> list = new ArrayList<>(CoolOres.LIST);
         CoolOres.LIST.clear();
+        list.forEach(Runnable::run);
     }
 }
