@@ -1,0 +1,4 @@
+{
+    "function": "set_nbt",
+    "tag": "{display:{Name:'{\"text\":\"Gamer Helmet\",\"color\":\"#FF8000\",\"italic\":false}'},Trim:{\"material\":\"minecraft:copper\",\"pattern\":\"minecraft:silence\"}}"
+}

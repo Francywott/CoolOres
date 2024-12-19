@@ -1,0 +1,4 @@
+{
+    "function": "set_nbt",
+    "tag": "{display:{Name:'{\"text\":\"Gamer Leggings\",\"color\":\"#0000FF\",\"italic\":false}'},Trim:{\"material\":\"minecraft:lapis\",\"pattern\":\"minecraft:silence\"}}"
+}

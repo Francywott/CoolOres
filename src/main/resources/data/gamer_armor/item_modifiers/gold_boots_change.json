@@ -1,0 +1,4 @@
+{
+    "function": "set_nbt",
+    "tag": "{display:{Name:'{\"text\":\"Gamer Boots\",\"color\":\"#FFFF00\",\"italic\":false}'},Trim:{\"material\":\"minecraft:gold\",\"pattern\":\"minecraft:silence\"}}"
+}

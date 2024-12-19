@@ -1,0 +1,4 @@
+{
+    "function": "set_nbt",
+    "tag": "{display:{Name:'{\"text\":\"Gamer Chestplate\",\"color\":\"#FF0000\",\"italic\":false}'},Trim:{material:\"minecraft:redstone\",pattern:\"minecraft:silence\"}}"
+}
