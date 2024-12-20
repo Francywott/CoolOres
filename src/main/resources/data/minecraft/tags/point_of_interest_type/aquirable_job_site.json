@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    {
-      "id": "cool_ores:money_poi",
-      "required": false
-    }
-  ]
-}

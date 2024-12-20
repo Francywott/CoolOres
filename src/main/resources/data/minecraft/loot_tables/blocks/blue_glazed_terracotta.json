@@ -28,6 +28,10 @@
               "tag": "{AmmoCount:55}"
             }
           ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "grenadevariety:grenade"
         }
       ],
       "rolls": 1
