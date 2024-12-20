@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 32],
 	"textures": {
-		"1": "lying_skeletons:block/skeleton",
-		"particle": "lying_skeletons:block/skeleton"
+		"1": "minecraft:block/lying_skeleton",
+		"particle": "minecraft:block/lying_skeleton"
 	},
 	"elements": [
 		{
