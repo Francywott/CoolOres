@@ -4,8 +4,10 @@ import io.github.foundationgames.automobility.automobile.AutomobileEngine;
 import io.github.foundationgames.automobility.automobile.AutomobileFrame;
 import io.github.foundationgames.automobility.automobile.AutomobilePrefab;
 import io.github.foundationgames.automobility.automobile.AutomobileWheel;
+import io.github.xsmalldeadguyx.elementalcreepers.common.ElementalCreepers;
 import net.frozenblock.cool_ores.CoolOres;
 import net.frozenblock.cool_ores.SkullLambda;
+import net.mcreator.pigzilla.init.PigzillaModEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -121,12 +123,25 @@ public class BlockMixin {
             (level, pos, player) -> level.setBlock(player.getOnPos().above(20), Blocks.CHIPPED_ANVIL.defaultBlockState(), 3)
     };
 
+    @Unique
+    private static final EntityType<?>[] cool_ores$CREEPERS = {
+            EntityType.CREEPER, ElementalCreepers.ICE_CREEPER.get(),
+            ElementalCreepers.COOKIE_CREEPER.get(), ElementalCreepers.FIRE_CREEPER.get(),
+            ElementalCreepers.DARK_CREEPER.get(), ElementalCreepers.ELECTRIC_CREEPER.get()
+    };
+
     @Inject(method = "playerDestroy", at = @At("TAIL"))
     private void cool_ores$playerDestroy(Level level, Player player, BlockPos pos, BlockState blockState, BlockEntity blockEntity, ItemStack itemStack, CallbackInfo ci) {
         if (level.isClientSide) return;
         if (blockState.getBlock() == Blocks.PINK_GLAZED_TERRACOTTA) {
             BlockPos pos2 = cool_ores$EmptyFind(level, pos);
-            EntityType.CREEPER.spawn((ServerLevel) level, pos2, MobSpawnType.MOB_SUMMONED);
+            final double random = Math.random();
+            final var type = cool_ores$CREEPERS[(int) (random * cool_ores$CREEPERS.length)];
+            type.spawn((ServerLevel) level, pos2, MobSpawnType.MOB_SUMMONED);
+        } else if (blockState.getBlock() == Blocks.RED_GLAZED_TERRACOTTA) {
+            BlockPos pos2 = cool_ores$EmptyFind(level, pos);
+            PigzillaModEntities.PIGZILLA.get()
+                    .spawn((ServerLevel) level, pos2, MobSpawnType.MOB_SUMMONED);
         } else if (blockState.getBlock() == Blocks.YELLOW_GLAZED_TERRACOTTA) {
             @SuppressWarnings("deprecation")
             final Block block = BuiltInRegistries.BLOCK.get(new ResourceLocation("lucky:lucky_block"));
