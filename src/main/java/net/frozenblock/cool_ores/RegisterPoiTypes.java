@@ -9,6 +9,6 @@ public class RegisterPoiTypes {
     public static final PoiType MONEY_POI = new PoiType(ImmutableSet.copyOf(RegisterBlocks.MONEY_TABLE.getStateDefinition().getPossibleStates()), 1, 1);
 
     public static void register(RegisterEvent.RegisterHelper<PoiType> helper) {
-        helper.register("monet_poi", MONEY_POI);
+        helper.register("money_poi", MONEY_POI);
     }
 }
