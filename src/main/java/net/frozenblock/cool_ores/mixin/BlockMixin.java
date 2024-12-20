@@ -26,15 +26,18 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BedBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.NetherPortalBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BedPart;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.skatric.ohioores.init.OhioOresModItems;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -126,8 +129,11 @@ public class BlockMixin {
                     level.setBlock(finalPos, Blocks.NETHER_PORTAL.defaultBlockState().setValue(NetherPortalBlock.AXIS, dir.getAxis()), 3);
                 }
             },
-            (level, pos, player) -> level.setBlock(player.getOnPos(), Blocks.CHIPPED_ANVIL.defaultBlockState(), 3),
-            (level, pos, player) -> level.setBlock(player.getOnPos(), Blocks.DAMAGED_ANVIL.defaultBlockState(), 3)
+            (level, pos, player) -> level.setBlock(pos, Blocks.CHIPPED_ANVIL.defaultBlockState(), 3),
+            (level, pos, player) -> {
+                level.setBlock(pos, Blocks.RED_BED.defaultBlockState(), 3);
+                level.setBlock(pos.north(), Blocks.RED_BED.defaultBlockState().setValue(BedBlock.PART, BedPart.FOOT), 3);
+            },
     };
 
     @Unique
@@ -136,7 +142,9 @@ public class BlockMixin {
             random -> new ItemStack(Items.GOLD_INGOT, (int)(2 + (random * 5))),
             random -> new ItemStack(Items.RAW_GOLD, (int)(2 + (random * 5))),
             random -> new ItemStack(Items.BRICK, (int)(2 + (random * 5))),
-            random -> new ItemStack(JECRegistry.GOLDCROWN_HELMET.get(), 1)
+            random -> new ItemStack(JECRegistry.GOLDCROWN_HELMET.get(), 1),
+            random -> new ItemStack(OhioOresModItems.WANDD.get()),
+            random -> new ItemStack(OhioOresModItems.THRONE.get())
     };
 
     @Inject(method = "playerDestroy", at = @At("TAIL"))
