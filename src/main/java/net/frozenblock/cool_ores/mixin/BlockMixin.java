@@ -1,11 +1,15 @@
 package net.frozenblock.cool_ores.mixin;
 
+import com.kreezcraft.justenoughcrowns.JustEnoughCrownsForge;
+import com.kreezcraft.justenoughcrowns.registry.JECRegistry;
 import io.github.foundationgames.automobility.automobile.AutomobileEngine;
 import io.github.foundationgames.automobility.automobile.AutomobileFrame;
 import io.github.foundationgames.automobility.automobile.AutomobilePrefab;
 import io.github.foundationgames.automobility.automobile.AutomobileWheel;
 import io.github.xsmalldeadguyx.elementalcreepers.common.ElementalCreepers;
 import net.frozenblock.cool_ores.CoolOres;
+import net.frozenblock.cool_ores.RandomLambda;
+import net.frozenblock.cool_ores.RegisterItems;
 import net.frozenblock.cool_ores.SkullLambda;
 import net.mcreator.pigzilla.init.PigzillaModEntities;
 import net.minecraft.core.BlockPos;
@@ -36,6 +40,8 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.function.Function;
 
 @Mixin(Block.class)
 
@@ -120,14 +126,17 @@ public class BlockMixin {
                     level.setBlock(finalPos, Blocks.NETHER_PORTAL.defaultBlockState().setValue(NetherPortalBlock.AXIS, dir.getAxis()), 3);
                 }
             },
-            (level, pos, player) -> level.setBlock(player.getOnPos().above(20), Blocks.CHIPPED_ANVIL.defaultBlockState(), 3)
+            (level, pos, player) -> level.setBlock(player.getOnPos(), Blocks.CHIPPED_ANVIL.defaultBlockState(), 3),
+            (level, pos, player) -> level.setBlock(player.getOnPos(), Blocks.DAMAGED_ANVIL.defaultBlockState(), 3)
     };
 
     @Unique
-    private static final EntityType<?>[] cool_ores$CREEPERS = {
-            EntityType.CREEPER, ElementalCreepers.ICE_CREEPER.get(),
-            ElementalCreepers.COOKIE_CREEPER.get(), ElementalCreepers.FIRE_CREEPER.get(),
-            ElementalCreepers.DARK_CREEPER.get(), ElementalCreepers.ELECTRIC_CREEPER.get()
+    private static final RandomLambda[] cool_ores$MONEY_LOOT = {
+            random -> new ItemStack(Items.ANVIL, (int)(2 + (random * 3))),
+            random -> new ItemStack(Items.GOLD_INGOT, (int)(2 + (random * 5))),
+            random -> new ItemStack(Items.RAW_GOLD, (int)(2 + (random * 5))),
+            random -> new ItemStack(Items.BRICK, (int)(2 + (random * 5))),
+            random -> new ItemStack(JECRegistry.GOLDCROWN_HELMET.get(), 1)
     };
 
     @Inject(method = "playerDestroy", at = @At("TAIL"))
@@ -136,12 +145,15 @@ public class BlockMixin {
         if (blockState.getBlock() == Blocks.PINK_GLAZED_TERRACOTTA) {
             BlockPos pos2 = cool_ores$EmptyFind(level, pos);
             final double random = Math.random();
-            final var type = cool_ores$CREEPERS[(int) (random * cool_ores$CREEPERS.length)];
+            EntityType<?>[] list = {
+                    EntityType.CREEPER, ElementalCreepers.ELECTRIC_CREEPER.get(), ElementalCreepers.FIRE_CREEPER.get(),
+                    ElementalCreepers.ICE_CREEPER.get(), ElementalCreepers.DARK_CREEPER.get()
+            };
+            final var type = list[(int) (random * list.length)];
             type.spawn((ServerLevel) level, pos2, MobSpawnType.MOB_SUMMONED);
         } else if (blockState.getBlock() == Blocks.RED_GLAZED_TERRACOTTA) {
             BlockPos pos2 = cool_ores$EmptyFind(level, pos);
-            PigzillaModEntities.PIGZILLA.get()
-                    .spawn((ServerLevel) level, pos2, MobSpawnType.MOB_SUMMONED);
+            PigzillaModEntities.PIGZILLA.get().spawn((ServerLevel) level, pos2, MobSpawnType.MOB_SUMMONED);
         } else if (blockState.getBlock() == Blocks.YELLOW_GLAZED_TERRACOTTA) {
             @SuppressWarnings("deprecation")
             final Block block = BuiltInRegistries.BLOCK.get(new ResourceLocation("lucky:lucky_block"));
@@ -154,9 +166,8 @@ public class BlockMixin {
             cool_ores$dropStack(level, pos, randomCar.toStack());
         } else if(blockState.getBlock() == Blocks.LIME_GLAZED_TERRACOTTA) {
             final double random = Math.random();
-            ItemStack itemStack1 = Items.ANVIL.getDefaultInstance();
-            itemStack1.setCount((int)(2 + (random * 3)));
-            cool_ores$dropStack(level, pos, itemStack1);
+            final double random2 = Math.random();
+            cool_ores$dropStack(level, pos, cool_ores$MONEY_LOOT[(int) (random*cool_ores$MONEY_LOOT.length)].supply(random2));
         } else if(blockState.getBlock() == Blocks.PURPLE_GLAZED_TERRACOTTA) {
             final double random = Math.random();
             cool_ores$SKULL_RUNNABLES[(int) (random * cool_ores$SKULL_RUNNABLES.length)].supply((ServerLevel) level, pos, player);

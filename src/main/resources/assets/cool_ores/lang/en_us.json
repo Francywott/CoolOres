@@ -1,4 +1,6 @@
 {
   "block.cool_ores.treadmill": "Treadmill",
-  "item.cool_ores.dumbbell": "Dumbbell"
+  "item.cool_ores.dumbbell": "Dumbbell",
+  "entity.minecraft.villager.cool_ores.moneymaster": "Money Master",
+  "block.cool_ores.money_table": "Money Table"
 }

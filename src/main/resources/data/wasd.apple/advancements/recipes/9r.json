@@ -1,0 +1,20 @@
+{
+  "parent": "wasd.apple:recipes/9",
+  "display": {
+    "icon": {
+      "item": "minecraft:clay_ball",
+      "nbt": "{CustomModelData:6370708}"
+    },
+    "title": "Flare Apple",
+    "description": "\nFirework Star x8\nApple\n",
+    "frame": "goal",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

@@ -1,5 +1,7 @@
 {
+    "replace": false,
     "values": [
-        "gamer_armor:load"
+        "gamer_armor:load",
+        "wasd.apple:load"
     ]
 }

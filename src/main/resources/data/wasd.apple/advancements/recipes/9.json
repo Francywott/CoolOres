@@ -1,0 +1,30 @@
+{
+  "parent": "wasd.apple:recipes/crafter_recipe",
+  "display": {
+    "icon": {
+      "item": "minecraft:golden_apple",
+      "nbt": "{CustomModelData:6370008}"
+    },
+    "title": "Flare Apple",
+    "description": "Shoot a bunch of fireworks into the sky.",
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "nbt": "{CustomModelData:6370008}",
+            "items": [
+              "minecraft:golden_apple"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

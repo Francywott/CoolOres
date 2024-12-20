@@ -1,0 +1,30 @@
+{
+  "parent": "wasd.apple:recipes/crafter_recipe",
+  "display": {
+    "icon": {
+      "item": "minecraft:golden_apple",
+      "nbt": "{CustomModelData:6370001,wasd_apple_type:2b}"
+    },
+    "title": "Spectator Apple 2",
+    "description": "Eat for 10 seconds of spectator mode.\nEnds wherever you are.",
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "nbt": "{CustomModelData:6370001,wasd_apple_type:2b}",
+            "items": [
+              "minecraft:golden_apple"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

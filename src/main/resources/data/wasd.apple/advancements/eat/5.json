@@ -1,0 +1,18 @@
+{
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "minecraft:golden_apple"
+          ],
+          "nbt": "{wasd_apple_type:5b}"
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "wasd.apple:eat/5"
+  }
+}

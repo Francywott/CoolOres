@@ -19,6 +19,10 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:milk_bucket"
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:leather_chestplate",
           "functions": [
             {

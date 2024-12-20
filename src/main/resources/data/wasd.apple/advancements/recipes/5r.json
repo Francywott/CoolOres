@@ -1,0 +1,20 @@
+{
+  "parent": "wasd.apple:recipes/5",
+  "display": {
+    "icon": {
+      "item": "minecraft:clay_ball",
+      "nbt": "{CustomModelData:6370704}"
+    },
+    "title": "Spectator Apple 2",
+    "description": "\nBottle o' Enchanting x4\nDiamond x4\nSpectator Apple\n",
+    "frame": "goal",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

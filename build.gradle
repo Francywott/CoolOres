@@ -132,12 +132,12 @@ dependencies {
     implementation fg.deobf("curse.maven:framework-549225:5911986")
     implementation fg.deobf("curse.maven:scorched-guns-802940:6003683")
     implementation fg.deobf("curse.maven:automobility-658286:4613497")
-    implementation fg.deobf("curse.maven:citadel-331936:6002521")
-
-
+    implementation fg.deobf("curse.maven:citadel-331936:5633260")
     implementation fg.deobf("lucky:lucky-block-forge:1.20.1-13.0")
     implementation fg.deobf("creeper:elementalcreepers:4.1.1-1.20.1")
     implementation fg.deobf("pigzilla:pigzilla:1.4.1-forge-1.20.1")
+    implementation fg.deobf("thecrowns:crown:1.9")
+    implementation fg.deobf("local:ohio_ores:1.20.1")
 }
 
 mixin {

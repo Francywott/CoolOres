@@ -28,16 +28,6 @@
               "tag": "{AmmoCount:55}"
             }
           ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "scguns:nervepinch",
-          "functions": [
-            {
-              "function": "minecraft:set_nbt",
-              "tag": "{AmmoCount:8}"
-            }
-          ]
         }
       ],
       "rolls": 1

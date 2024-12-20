@@ -1,0 +1,20 @@
+{
+  "parent": "wasd.apple:recipes/1",
+  "display": {
+    "icon": {
+      "item": "minecraft:clay_ball",
+      "nbt": "{CustomModelData:6370700}"
+    },
+    "title": "Apple i-Block",
+    "description": "\nIron Ingot x6\nJukebox\nApple\nStone Button\n",
+    "frame": "goal",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

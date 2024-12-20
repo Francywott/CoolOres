@@ -1,0 +1,20 @@
+{
+  "parent": "wasd.apple:recipes/14",
+  "display": {
+    "icon": {
+      "item": "minecraft:clay_ball",
+      "nbt": "{CustomModelData:6370713}"
+    },
+    "title": "TNT Apple",
+    "description": "\nGunpowder x8\nGolden Apple\n",
+    "frame": "goal",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

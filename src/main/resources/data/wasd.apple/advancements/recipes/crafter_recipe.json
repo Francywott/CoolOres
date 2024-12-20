@@ -1,0 +1,20 @@
+{
+  "parent": "wasd.apple:recipes/crafter",
+  "display": {
+    "icon": {
+      "item": "minecraft:clay_ball",
+      "nbt": "{CustomModelData:6370309}"
+    },
+    "title": "Custom Crafter",
+    "description": "Used to craft all the custom items in this pack.",
+    "frame": "goal",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

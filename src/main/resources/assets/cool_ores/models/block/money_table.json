@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "cool_ores:block/money_table_bottom",
+    "east": "cool_ores:block/money_table_side",
+    "north": "cool_ores:block/money_table_front",
+    "particle": "cool_ores:block/money_table_front",
+    "south": "cool_ores:block/money_table_front",
+    "up": "cool_ores:block/money_table_top",
+    "west": "cool_ores:block/money_table_side"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "parent": "wasd.apple:recipes/crafter_recipe",
+  "display": {
+    "icon": {
+      "item": "minecraft:carrot_on_a_stick",
+      "nbt": "{CustomModelData:6370220}"
+    },
+    "title": "Apple i-Block",
+    "description": "Right-Click to play music, shift-right-click to change songs.",
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "nbt": "{CustomModelData:6370220}",
+            "items": [
+              "minecraft:carrot_on_a_stick"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

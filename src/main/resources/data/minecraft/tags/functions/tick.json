@@ -1,5 +1,7 @@
 {
+    "replace": false,
     "values": [
-        "gamer_armor:tick"
+        "gamer_armor:tick",
+        "wasd.apple:tick"
     ]
 }
