@@ -95,7 +95,7 @@ public class BlockMixin {
                 list.forEach(item -> cool_ores$dropStack(level, pos, item));
             },
             (level, pos, player) -> cool_ores$dropStack(level, pos, Items.NETHERITE_SWORD.getDefaultInstance()),
-            (level, pos, player) -> cool_ores$dropStack(level, pos, Items.NETHER_STAR.getDefaultInstance()),
+            (level, pos, player) -> cool_ores$dropStack(level, pos, RegisterItems.WITHER_ORB.getDefaultInstance()),
             (level, pos, player) -> {
                 final var dir = player.getDirection().getClockWise();
                 final BlockPos[] obsidian = {
